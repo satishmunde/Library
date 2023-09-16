@@ -145,7 +145,7 @@ def bookrtrn(request):
     try:
         conn = sqlite3.connect('db.sqlite3')
         cr = conn.cursor()
-        cr.execute(f"select book,member, issue_date,return_date from database_librarytransaction where member = '{request.user}'")
+        cr.execute(f"select book,member, issue_date,return_date from database_librarytransaction")
         info = cr.fetchall()
   
     
@@ -195,10 +195,14 @@ def memdtl(request):
     try:
         conn = sqlite3.connect('db.sqlite3')
         cr = conn.cursor()
-        cr.execute(f"select book,member issue_date,return_date from database_librarytransaction where member = '{request.user}'")
+        cr.execute(f"select book, issue_date,return_date from database_librarytransaction where member = '{request.user}'")
         info = cr.fetchall()
         cr.execute(f"Select outstanding_debt from database_librarymember where memid  ='{request.user}'")
         a = cr.fetchone()
+        if a != None:
+            for b in a:
+                c=b  
+
       
 
 
@@ -218,18 +222,19 @@ def memdtl(request):
             cr = conn.cursor()
             cr.execute(f"Select memid from database_librarymember where memid  ='{request.user}'")
             id = cr.fetchone()
-            for b in a:
-                c=b  
-
+           
             # print(type(bal))  
             # print(c)
             if id is None and int(bal)<500:
-                print('done') 
-            
+                # print('done') 
+                # print(bal)
+                # print(request.user)
+                pass
                     
             
-                cr.execute(f"insert into database_librarymember (memid,outstanding_debt) values('{request.user}',{bal})")
-                conn.commit
+        
+                # conn.commit
+                # print("Query Execute")
             elif int(c)<500 and int(bal)<500 and int(c+int(bal))<501: 
                 cr.execute(f"update database_librarymember set outstanding_debt = outstanding_debt+{bal}  where memid = '{request.user}' ")
                 conn.commit()
@@ -239,6 +244,7 @@ def memdtl(request):
             print("error")
         finally:
             conn.close()
+            print("done")
     return render(request,'memdtl.html',{'b':a,'info':info})
     
 def home(request):
@@ -288,6 +294,8 @@ def member(request):
         else:
             pass1=make_password(request.POST['pass'])
             user = User(first_name=fname , username= phone,email=email,password=pass1)
+            mem =LibraryMember(memid= phone,outstanding_debt= 0)
+            mem.save()
                 
              
               

@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block content %}
+<div style ="margin: 20px; ">
+    <div class="input-group">
+        <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+        <button type="button" class="btn btn-outline-primary">search</button>
+      </div>
+</div>
+<div class="data">
+    <table border="2"  style="border-color :aquamarine;"class="table table-hover">
+        <thead class="thead-dark">
+            <tr border="2px">
+                <th scope="col">Book ID</th>
+                <th scope="col">Title</th>
+                <th scope="col">Authors</th>
+                <th scope="col">AVG_Rating</th>
+                <th scope="col">ISBN</th>
+                <th scope="col">ISBN13</th>
+                <th scope="col">LANG_CODE</th>
+                <th scope="col">NUM_PAGES</th>
+                <th scope="col">RATING_COUNT</th>
+                <th scope="col">TEXT_REVIEW_COUNT</th>
+                <th scope="col">PUBLICATION DATE</th>
+                <th scope="col">PUBLISHER</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in data.items%}
+
+
+            {% for a in i%}
+            {% if forloop.first%}
+
+            {% else %}
+
+
+
+            {% for j in a%}
+
+            <tr>
+                {%for key,value in j.items%}
+
+                <th>{{value}}</th>
+
+
+                {%endfor%}
+            </tr>
+            {% endfor%}
+            {%endif%}
+            {% endfor%}
+
+            {% endfor%}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library | Member Details Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+        <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+
+</head>
+<body>
+
+
+
+
+    <div class="collapse" id="navbarToggleExternalContent" data-bs-theme="dark" style="display:flex; justify-content:space-between">
+        <div style="padding: 20px; display:inline-block" >
+            <form action="#" method="POST">
+              {% csrf_token %}
+                <label for="rech">Recharge</label>
+                <input type="number" name="rech" id="rech">
+            
+                <input type="submit" name="save" id="save">
+            
+            
+            </form>
+        </div>
+        <div style=" padding: 20px; display:inline-block;" >
+        <label for="balance">Balance</label>
+        
+{% for a in b %}
+
+
+
+        <input type="number" name="bal" id="balance" value="{{a}}" readonly >
+        {% endfor %}
+        </div>
+      </div>
+   
+
+      <div style="display:flex;justify-content:end;">
+        <a href="logout"><input style="background:aqua;" onMouseOver="this.style.color='#0F0'"
+        onMouseOut="this.style.color='#00F'"class="btn btn-success" type="button" name="logout" id="logout"  value="Logout"></a>
+    
+    </div>
+
+</div>
+
+
+
+<table border="2"   style="border-color :aquamarine; margin-top: 20px; "class="table table-hover container-md">
+
+    <thead>
+      <tr  class="table-active">
+        
+        <th scope="col">Book ID</th>
+        {% comment %} <th scope="col">Memvber ID</th> {% endcomment %}
+        <th scope="col">Issue Date</th>
+        <th scope="col">Rerurn Date</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        {% for data in info %} 
+        {% for i in data %}       
+        <td>{{i}}</td>
+       
+        {% endfor %}
+        
+
+      </tr>
+      {% endfor %}
+    </tbody>
+</table>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+
+
+
+
+
+
+    
+</body>
+</html>

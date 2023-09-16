@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library | Book Return Page </title>
+    <link rel="stylesheet" href="/static/books.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.tailwindcss.com"></script>
+   
+  
+</head>
+<body>
+
+<fieldset >
+    
+<form action="#" method="POST" style=" display:flex; justify-content: space-around;  padding-top:20px;"  > 
+    {% csrf_token %}
+    <label for="bookid"> Book ID : -</label>
+    <input type="text" name="bookid" id="bookId" placeholder="Enter Book Id"      class="  rounded-md border-black py-1.5 text-gray-900 shadow-sm  ">
+    
+    <label for="memid">Member Id : - </label>
+    <input type="text" name="memid" id="memid" placeholder="Enter Member Id" style="border:2px solid black;"                class="  rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 ">
+
+    <label for="fee"> Fee : - </label>
+    <input type="number" name="fee" id="fee" placeholder="Enter Rent Fee"                 class="  rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 ">
+ 
+ 
+<button type="submit"  style="background:green; " class="btn btn-success">Return Book</button> 
+</form>
+</fieldset>
+<br>
+<hr>
+<!-- <table class="table-success"> -->
+
+  <table border="2"   style="border-color :aquamarine; margin-top:20px; "class="table table-hover container-md">
+
+    <thead>
+      <tr  class="table-active">
+        
+        <th scope="col">Book ID</th>
+        <th scope="col">Member ID</th>
+        <th scope="col">Issue Date</th>
+        <th scope="col">Rerurn Date</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        {% for data in info %} 
+        {% for i in data %}       
+        <td>{{i}}</td>
+       
+        {% endfor %}
+        
+
+      </tr>
+      {% endfor %}
+    </tbody>
+</table>
+
+
+
+</body>
+</html>
+
+
+

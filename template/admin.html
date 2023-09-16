@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div style="display:flex;justify-content:end;">
+    <a href="logout"><input style="background:aqua;" onMouseOver="this.style.color='#0F0'"
+    onMouseOut="this.style.color='#00F'"class="btn btn-success" type="button" name="logout" id="logout"  value="Logout"></a>
+
+</div>
+<div style=" display:flex; width:80%; justify-content: space-around; margin: 20% auto ;   ">
+
+    <a href="issue"><button type="button"  style="background:green;" class="btn btn-success">Issue Book</button> </a>
+    <a href="return"> <button type="button" style="background:green;" class="btn btn-success">Return Book</button> </a>
+
+</div>
+
+
+
+
+{% endblock content %}
+
+
+
+
+
+
+
